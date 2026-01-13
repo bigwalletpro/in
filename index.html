@@ -1,19 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My First Website</title>
+  <title>My Website</title>
   <meta charset="UTF-8">
   <style>
-    body { font-family: Arial; background:#f5f5f5; text-align:center; padding:40px; }
-    h1 { color:#2c3e50; }
-    p { color:#555; }
-    button { padding:12px 20px; font-size:16px; background:#27ae60; color:white; border:none; border-radius:6px; }
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+      text-align: center;
+    }
+    .box {
+      background: white;
+      width: 300px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #aaa;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+    }
+    button {
+      padding: 10px 20px;
+      background: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .link {
+      color: blue;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <h1>Hello Himanshu</h1>
-  <p>Ye meri pehli website hai.</p>
-  <p>Website GitHub Pages par free me live ho rahi hai.</p>
-  <button>Join Now</button>
+
+<div class="box" id="registerBox">
+  <h2>Register</h2>
+  <input type="text" id="rname" placeholder="Full Name">
+  <input type="email" id="remail" placeholder="Email">
+  <input type="text" id="rphone" placeholder="Mobile Number">
+  <input type="password" id="rpass" placeholder="Password">
+  <button onclick="register()">Register</button>
+  <p>Already have account? <span class="link" onclick="showLogin()">Login</span></p>
+</div>
+
+<div class="box" id="loginBox" style="display:none;">
+  <h2>Login</h2>
+  <input type="email" id="lemail" placeholder="Email">
+  <input type="password" id="lpass" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <p>No account? <span class="link" onclick="showRegister()">Register</span></p>
+</div>
+
+<script>
+function showLogin() {
+  document.getElementById("registerBox").style.display = "none";
+  document.getElementById("loginBox").style.display = "block";
+}
+
+function showRegister() {
+  document.getElementById("loginBox").style.display = "none";
+  document.getElementById("registerBox").style.display = "block";
+}
+
+function register() {
+  let email = document.getElementById("remail").value;
+  let pass = document.getElementById("rpass").value;
+  localStorage.setItem("email", email);
+  localStorage.setItem("pass", pass);
+  alert("Register Successful!");
+  showLogin();
+}
+
+function login() {
+  let email = document.getElementById("lemail").value;
+  let pass = document.getElementById("lpass").value;
+  let se = localStorage.getItem("email");
+  let sp = localStorage.getItem("pass");
+
+  if(email === se && pass === sp){
+    alert("Login Successful!");
+  } else {
+    alert("Wrong Email or Password");
+  }
+}
+</script>
+
 </body>
 </html>
