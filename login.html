@@ -40,6 +40,7 @@ const firebaseConfig = {
       firebase.auth().signInWithEmailAndPassword(email, pass)
         .then(()=>{
           alert("Login Successful");
+          window.location.href = "dashboard.html";
         })
         .catch(err=>{
           document.getElementById("msg").innerText = err.message;
