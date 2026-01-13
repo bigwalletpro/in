@@ -2,69 +2,68 @@
 <html>
 <head>
   <title>Register with OTP</title>
-  <style>
-    body {
-      font-family: Arial;
-      background: #f2f2f2;
-    }
-    .box {
-      width: 300px;
-      margin: 60px auto;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 0 10px #ccc;
-    }
-    input, button {
-      width: 90%;
-      padding: 10px;
-      margin: 8px 0;
-    }
-    button {
-      background: green;
-      color: white;
-      border: none;
-      font-size: 16px;
-    }
-  </style>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 </head>
-<body>
+<body style="font-family:Arial; background:#f2f2f2;">
 
-<div class="box">
+<div style="width:300px;margin:50px auto;padding:20px;background:#fff;border-radius:10px;">
   <h2>Register</h2>
-  <input id="name" type="text" placeholder="Full Name">
-  <input id="email" type="email" placeholder="Email">
-  <input id="phone" type="tel" placeholder="Phone Number">
-  <input id="password" type="password" placeholder="Password">
 
-  <button onclick="sendOTP()">Send OTP</button>
+  <input id="phone" placeholder="Phone with country code" style="width:100%;padding:8px;"><br><br>
+  <button onclick="sendOTP()" style="width:100%;padding:10px;background:green;color:white;">Send OTP</button>
 
-  <input id="otp" type="text" placeholder="Enter OTP">
-  <button onclick="verifyOTP()">Verify & Register</button>
+  <div id="otpBox" style="display:none;">
+    <br>
+    <input id="otp" placeholder="Enter OTP" style="width:100%;padding:8px;"><br><br>
+    <button onclick="verifyOTP()" style="width:100%;padding:10px;background:blue;color:white;">Verify OTP</button>
+  </div>
+
+  <div id="recaptcha-container"></div>
 </div>
 
 <script>
-let generatedOTP = "";
+  const firebaseConfig = {
+    apiKey: "YAHAN_API_KEY",
+    authDomain: "YAHAN_AUTH_DOMAIN",
+    projectId: "YAHAN_PROJECT_ID",
+    appId: "YAHAN_APP_ID"
+  };
 
-function sendOTP() {
-  let phone = document.getElementById("phone").value;
-  if (phone === "") {
-    alert("Phone number daalo!");
-    return;
-  }
-  generatedOTP = Math.floor(1000 + Math.random() * 9000);
-  alert("Demo OTP (SMS ke jagah yahin dikha raha): " + generatedOTP);
-}
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
 
-function verifyOTP() {
-  let userOTP = document.getElementById("otp").value;
-  if (userOTP === generatedOTP.toString()) {
-    alert("Registration Successful!");
-  } else {
-    alert("Wrong OTP!");
+  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+    'recaptcha-container',
+    { size: 'invisible' },
+    auth
+  );
+
+  let confirmationResult;
+
+  function sendOTP() {
+    let phone = document.getElementById("phone").value;
+    auth.signInWithPhoneNumber(phone, window.recaptchaVerifier)
+      .then((result) => {
+        confirmationResult = result;
+        alert("OTP sent!");
+        document.getElementById("otpBox").style.display = "block";
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
   }
-}
+
+  function verifyOTP() {
+    let code = document.getElementById("otp").value;
+    confirmationResult.confirm(code)
+      .then((result) => {
+        alert("Phone verified! User ID: " + result.user.uid);
+      })
+      .catch((error) => {
+        alert("Wrong OTP");
+      });
+  }
 </script>
 
 </body>
