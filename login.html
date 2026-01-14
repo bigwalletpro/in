@@ -1,95 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>BIGPRO Login</title>
-  <style>
-    body{
-      margin:0;
-      font-family: Arial, sans-serif;
-      background:#1b1b1b;
-      color:white;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-    }
-    .box{
-      width:320px;
-      background:#2a2a2a;
-      border-radius:12px;
-      padding:25px;
-      box-shadow:0 0 20px rgba(0,0,0,0.6);
-    }
-    h2{
-      text-align:center;
-      color:#f2c15b;
-      margin-bottom:10px;
-    }
-    p{
-      text-align:center;
-      color:#aaa;
-      font-size:13px;
-      margin-bottom:20px;
-    }
-    input{
-      width:100%;
-      padding:12px;
-      margin:10px 0;
-      border:none;
-      border-radius:8px;
-      background:#3a3a3a;
-      color:white;
-      font-size:14px;
-    }
-    input::placeholder{color:#888;}
-    .btn{
-      width:100%;
-      padding:12px;
-      margin-top:15px;
-      border:none;
-      border-radius:25px;
-      background:linear-gradient(90deg,#f2c15b,#d89b2d);
-      color:#3b2500;
-      font-size:16px;
-      font-weight:bold;
-      cursor:pointer;
-    }
-    .btn2{
-      width:100%;
-      padding:12px;
-      margin-top:10px;
-      border:2px solid #f2c15b;
-      border-radius:25px;
-      background:transparent;
-      color:#f2c15b;
-      font-size:15px;
-      cursor:pointer;
-    }
-    .row{
-      display:flex;
-      justify-content:space-between;
-      margin-top:15px;
-      font-size:12px;
-      color:#f2c15b;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Login to BIGPRO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#6a00ff,#b100ff);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.card{
+  background:#1c0033;
+  width:90%;
+  max-width:360px;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  color:white;
+}
+.card h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+.input-box{
+  background:#2c004d;
+  border-radius:10px;
+  padding:10px;
+  margin-bottom:15px;
+  display:flex;
+  align-items:center;
+}
+.input-box i{
+  color:#ffc800;
+  margin-right:10px;
+}
+.input-box input{
+  background:transparent;
+  border:none;
+  outline:none;
+  color:white;
+  width:100%;
+  font-size:15px;
+}
+.btn{
+  background:#ffc800;
+  border:none;
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.btn:hover{
+  background:#ffb700;
+}
+.links{
+  margin-top:15px;
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+}
+.links a{
+  color:#ffc800;
+  text-decoration:none;
+}
+.register{
+  text-align:center;
+  margin-top:12px;
+}
+.register a{
+  color:#00ffea;
+  text-decoration:none;
+  font-weight:bold;
+}
+</style>
 </head>
 <body>
-  <div class="box">
-    <h2>BIGPRO</h2>
-    <p>Please login with your phone number or email</p>
 
-    <input type="text" placeholder="Phone or Email">
-    <input type="password" placeholder="Password">
+<div class="card">
+  <h2>Login to BIGPRO</h2>
 
-    <button class="btn">Log in</button>
-    <button class="btn2">Register</button>
-
-    <div class="row">
-      <span>Forgot password</span>
-      <span>Customer Service</span>
-    </div>
+  <div class="input-box">
+    <i class="fa fa-envelope"></i>
+    <input type="email" id="email" placeholder="Enter your email">
   </div>
+
+  <div class="input-box">
+    <i class="fa fa-lock"></i>
+    <input type="password" id="password" placeholder="Enter password">
+  </div>
+
+  <button class="btn" onclick="login()">Login</button>
+
+  <div class="links">
+    <a href="#">Forgot password?</a>
+    <a href="#">Customer service</a>
+  </div>
+
+  <div class="register">
+    New user? <a href="register.html">Register here</a>
+  </div>
+</div>
+
+<script>
+function login(){
+  let email = document.getElementById("email").value;
+  let pass = document.getElementById("password").value;
+  if(email=="" || pass==""){
+    alert("Please fill all fields");
+  }else{
+    alert("Login button clicked (backend connect karo)");
+  }
+}
+</script>
+
 </body>
 </html>
