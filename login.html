@@ -1,120 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | BIGPRO</title>
+  <title>BIGPRO Login</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #4a00e0, #8e2de2);
+    body{
+      margin:0;
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: #fff;
+      background:#1b1b1b;
+      color:white;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
     }
-    .container {
-      background: rgba(0,0,0,0.6);
-      padding: 30px;
-      border-radius: 12px;
-      width: 95%;
-      max-width: 380px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    .box{
+      width:320px;
+      background:#2a2a2a;
+      border-radius:12px;
+      padding:25px;
+      box-shadow:0 0 20px rgba(0,0,0,0.6);
     }
-    .container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 24px;
-      font-weight: bold;
+    h2{
+      text-align:center;
+      color:#f2c15b;
+      margin-bottom:10px;
     }
-    .container input {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 8px;
+    p{
+      text-align:center;
+      color:#aaa;
+      font-size:13px;
+      margin-bottom:20px;
     }
-    .btn {
-      width: 100%;
-      padding: 12px;
-      background: #ffd700;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      color: #000;
-      margin-top: 12px;
+    input{
+      width:100%;
+      padding:12px;
+      margin:10px 0;
+      border:none;
+      border-radius:8px;
+      background:#3a3a3a;
+      color:white;
+      font-size:14px;
     }
-    .btn:hover {
-      background: #ffca00;
+    input::placeholder{color:#888;}
+    .btn{
+      width:100%;
+      padding:12px;
+      margin-top:15px;
+      border:none;
+      border-radius:25px;
+      background:linear-gradient(90deg,#f2c15b,#d89b2d);
+      color:#3b2500;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
     }
-    .text-center {
-      text-align: center;
-      margin-top: 12px;
+    .btn2{
+      width:100%;
+      padding:12px;
+      margin-top:10px;
+      border:2px solid #f2c15b;
+      border-radius:25px;
+      background:transparent;
+      color:#f2c15b;
+      font-size:15px;
+      cursor:pointer;
     }
-    .text-center a {
-      color: #ffe066;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .error {
-      background: #e74c3c;
-      padding: 8px;
-      border-radius: 8px;
-      text-align: center;
-      margin-top: 10px;
+    .row{
+      display:flex;
+      justify-content:space-between;
+      margin-top:15px;
+      font-size:12px;
+      color:#f2c15b;
     }
   </style>
 </head>
 <body>
+  <div class="box">
+    <h2>BIGPRO</h2>
+    <p>Please login with your phone number or email</p>
 
-<div class="container">
-  <h2>Login to BIGPRO</h2>
+    <input type="text" placeholder="Phone or Email">
+    <input type="password" placeholder="Password">
 
-  <input type="email" id="lemail" placeholder="Enter your email" required>
-  <input type="password" id="lpass" placeholder="Enter password" required>
-  <button class="btn" onclick="login()">Login</button>
+    <button class="btn">Log in</button>
+    <button class="btn2">Register</button>
 
-  <p class="text-center">New user? <a href="index.html">Register here</a></p>
-
-  <p id="errorMsg" class="error" style="display:none"></p>
-</div>
-
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-
-<script>
-  const firebaseConfig = {
-  apiKey: "AIzaSyCSKLOKjHWNImv5bmxzOTCthvQd8iWa6aQ",
-  authDomain: "big-d28e3.firebaseapp.com",
-  projectId: "big-d28e3",
-  storageBucket: "big-d28e3.firebasestorage.app",
-  messagingSenderId: "509862839346",
-  appId: "1:509862839346:web:ec80fc33a33eb19610e82b",
-  measurementId: "G-1P2EMECLBT"
-  };
-  firebase.initializeApp(firebaseConfig);
-
-  function login() {
-    const email = document.getElementById("lemail").value;
-    const pass = document.getElementById("lpass").value;
-    const errorDiv = document.getElementById("errorMsg");
-
-    firebase.auth().signInWithEmailAndPassword(email, pass)
-      .then(() => {
-        errorDiv.style.display = "none";
-        window.location.href = "dashboard.html";
-      })
-      .catch((err) => {
-        errorDiv.innerText = err.message;
-        errorDiv.style.display = "block";
-      });
-  }
-</script>
-
+    <div class="row">
+      <span>Forgot password</span>
+      <span>Customer Service</span>
+    </div>
+  </div>
 </body>
 </html>
