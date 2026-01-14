@@ -1,83 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Login to BIGPRO</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<title>BIGPRO Login</title>
 <style>
+*{box-sizing:border-box;}
 body{
   margin:0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#6a00ff,#b100ff);
+  font-family:Arial, sans-serif;
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
+  background:
+    radial-gradient(circle at top left,#ff7aff33,transparent 40%),
+    radial-gradient(circle at bottom right,#00ffff33,transparent 40%),
+    linear-gradient(135deg,#4a00ff,#8a00ff);
 }
+
 .card{
-  background:#1c0033;
-  width:90%;
-  max-width:360px;
-  padding:25px;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  width:92%;
+  max-width:380px;
+  background:rgba(30,0,60,0.9);
+  border-radius:20px;
+  padding:28px 22px;
+  box-shadow:0 20px 50px rgba(0,0,0,.6);
   color:white;
-}
-.card h2{
   text-align:center;
-  margin-bottom:20px;
+  border:2px solid rgba(255,255,255,0.15);
 }
-.input-box{
-  background:#2c004d;
-  border-radius:10px;
-  padding:10px;
-  margin-bottom:15px;
-  display:flex;
-  align-items:center;
+
+.logo{
+  font-size:32px;
+  font-weight:900;
+  color:#ffcc00;
+  letter-spacing:2px;
+  margin-bottom:10px;
 }
-.input-box i{
-  color:#ffc800;
-  margin-right:10px;
+
+h2{
+  margin:10px 0 20px;
 }
-.input-box input{
-  background:transparent;
+
+.field{
+  position:relative;
+  margin:14px 0;
+}
+.field input{
+  width:100%;
+  padding:14px 45px;
+  border-radius:14px;
   border:none;
   outline:none;
+  background:#2b0050;
   color:white;
-  width:100%;
   font-size:15px;
 }
+.field span{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:18px;
+  color:#ffcc00;
+}
+
 .btn{
-  background:#ffc800;
-  border:none;
+  margin-top:18px;
   width:100%;
-  padding:12px;
-  border-radius:12px;
-  font-size:16px;
-  font-weight:bold;
+  padding:14px;
+  border:none;
+  border-radius:16px;
+  font-size:18px;
+  font-weight:700;
+  background:linear-gradient(135deg,#ffcc00,#ff9900);
+  color:#000;
   cursor:pointer;
+  box-shadow:0 8px 20px rgba(255,200,0,.5);
 }
-.btn:hover{
-  background:#ffb700;
-}
+
 .links{
-  margin-top:15px;
+  margin-top:16px;
+  font-size:14px;
+}
+.links a{
+  color:#ffcc00;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.bottom{
+  margin-top:20px;
   display:flex;
   justify-content:space-between;
   font-size:13px;
 }
-.links a{
-  color:#ffc800;
-  text-decoration:none;
+.bottom div{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#ddd;
 }
-.register{
-  text-align:center;
-  margin-top:12px;
-}
-.register a{
-  color:#00ffea;
-  text-decoration:none;
+.icon{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ffcc00,#ff9900);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:black;
   font-weight:bold;
 }
 </style>
@@ -85,41 +117,30 @@ body{
 <body>
 
 <div class="card">
+  <div class="logo">BIGPRO</div>
   <h2>Login to BIGPRO</h2>
 
-  <div class="input-box">
-    <i class="fa fa-envelope"></i>
-    <input type="email" id="email" placeholder="Enter your email">
+  <div class="field">
+    <span>📧</span>
+    <input type="email" placeholder="Enter your email">
   </div>
 
-  <div class="input-box">
-    <i class="fa fa-lock"></i>
-    <input type="password" id="password" placeholder="Enter password">
+  <div class="field">
+    <span>🔒</span>
+    <input type="password" placeholder="Enter password">
   </div>
 
-  <button class="btn" onclick="login()">Login</button>
+  <button class="btn">Login</button>
 
   <div class="links">
-    <a href="#">Forgot password?</a>
-    <a href="#">Customer service</a>
+    New user? <a href="#">Register here</a>
   </div>
 
-  <div class="register">
-    New user? <a href="register.html">Register here</a>
+  <div class="bottom">
+    <div><div class="icon">🔑</div>Forgot password</div>
+    <div><div class="icon">🎧</div>Customer Service</div>
   </div>
 </div>
-
-<script>
-function login(){
-  let email = document.getElementById("email").value;
-  let pass = document.getElementById("password").value;
-  if(email=="" || pass==""){
-    alert("Please fill all fields");
-  }else{
-    alert("Login button clicked (backend connect karo)");
-  }
-}
-</script>
 
 </body>
 </html>
