@@ -115,6 +115,12 @@ document.getElementById("eye1").onclick = function () {
 document.getElementById("eye2").onclick = function () {
   toggle("pass2", "eye2");
 };
+document.getElementById("supportBtn").onclick = function () {
+  var phone = "916205702371"; // yahan apna WhatsApp number daalo
+  var msg = "Hello, mujhe website me problem aa rahi hai. Please help.";
+  var url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+  window.open(url, "_blank");
+};
 </script>
 </body>
 </html>
