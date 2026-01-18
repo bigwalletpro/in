@@ -4,141 +4,139 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login</title>
-
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial;background:#f6f7f9}
-.header{background:linear-gradient(90deg,#ff6b6b,#ff8e8e);color:#fff;text-align:center;padding:25px}
-.tabs{display:flex;background:#fff}
-.tab{flex:1;text-align:center;padding:12px;border-bottom:2px solid #ddd}
-.tab.active{color:#ff6b6b;border-color:#ff6b6b}
+
+.header{
+  background:linear-gradient(90deg,#ff6b6b,#ff8e8e);
+  color:#fff;text-align:center;padding:25px
+}
+
+.tabs{
+  display:flex;
+  background:#fff;
+}
+
+.tab{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+  padding:12px;
+  border-bottom:2px solid #ddd;
+  font-size:15px;
+  color:#ff6b6b;
+  border-color:#ff6b6b;
+}
+
 .box{padding:15px}
 .label{margin:12px 0 5px}
-.input{width:100%;padding:12px;border-radius:12px;border:1px solid #ddd}
-.btn-main{width:100%;padding:15px;border-radius:25px;border:none;background:linear-gradient(90deg,#ff6b6b,#ff8e8e);color:#fff;font-size:16px;margin-top:15px}
-.btn-outline{width:100%;padding:15px;border-radius:25px;border:2px solid #ff6b6b;background:#fff;color:#ff6b6b;margin-top:10px}
-.msg{margin-top:8px;font-size:14px}
-.chat-wrap{position:fixed;right:15px;bottom:15px;text-align:center}
-.chat{background:#ff6b6b;color:#fff;width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px}
-.chat-text{font-size:12px;color:#ff6b6b;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:4px}
-.hidden{display:none}
+.input{
+  width:100%;padding:12px;border-radius:12px;
+  border:1px solid #ddd;font-size:15px
+}
+
+.btn-main{
+  width:100%;padding:15px;border-radius:25px;border:none;
+  background:linear-gradient(90deg,#ff6b6b,#ff8e8e);
+  color:#fff;font-size:16px;margin-top:15px
+}
+
+.btn-outline{
+  width:100%;padding:15px;border-radius:25px;
+  border:2px solid #ff6b6b;background:#fff;
+  color:#ff6b6b;margin-top:10px
+}
+
+.error{
+  color:red;
+  margin-top:8px;
+  font-weight:bold;
+}
+
+.chat{
+  position:fixed;right:15px;bottom:40px;
+  background:#ff6b6b;color:#fff;
+  width:55px;height:55px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px
+}
+
+.chat-text{
+  position:fixed;right:15px;bottom:10px;
+  color:#ff6b6b;font-weight:bold;
+  display:flex;align-items:center;gap:5px;
+}
 </style>
 </head>
-
 <body>
 
 <div class="header">
   <h2>Log in</h2>
-  <p>Please log in with your phone number or email</p>
+  <p>Please log in with your phone number</p>
 </div>
 
 <div class="tabs">
-  <div class="tab active" id="tabPhone">📱 Log in with phone</div>
-  <div class="tab" id="tabEmail">📧 Email Login</div>
+  <div class="tab">
+    <span>📱</span>
+    <span>Log in with phone</span>
+  </div>
 </div>
 
 <div class="box">
+  <div class="label">📱 Phone number</div>
+  <input class="input" id="phone" placeholder="+91  Please enter phone number">
 
-  <!-- PHONE LOGIN -->
-  <div id="phoneBox">
-    <div class="label">📱 Phone number</div>
-    <input class="input" id="phone" placeholder="+91  Please enter the phone number">
+  <div class="label">🔒 Password</div>
+  <input type="password" class="input" id="password" placeholder="Enter password">
 
-    <div class="label">🔒 Password</div>
-    <input type="password" class="input" id="password" placeholder="Please enter Password">
+  <p>
+    <input type="checkbox" id="remember"> Remember password
+  </p>
 
-    <p>
-      <input type="checkbox" id="remember"> Remember password
-    </p>
-  </div>
-
-  <!-- EMAIL LOGIN -->
-  <div id="emailBox" class="hidden">
-    <div class="label">📧 Email</div>
-    <input class="input" id="email" placeholder="Please enter email">
-
-    <div class="label">🔒 Password</div>
-    <input type="password" class="input" id="emailPass" placeholder="Please enter Password">
-  </div>
-
-  <div id="msg" class="msg"></div>
+  <div id="error" class="error"></div>
 
   <button class="btn-main" id="loginBtn">Log in</button>
   <button class="btn-outline" onclick="location.href='register.html'">Register</button>
 </div>
 
-<!-- Floating Chat Button -->
-<div class="chat-wrap">
-  <div class="chat" id="supportBtn">💬</div>
-  <div class="chat-text">🎧 Customer Support</div>
-</div>
+<div class="chat" id="supportBtn">💬</div>
+<div class="chat-text">🎧 Customer Support</div>
 
 <script>
-const tabPhone = document.getElementById("tabPhone");
-const tabEmail = document.getElementById("tabEmail");
-const phoneBox = document.getElementById("phoneBox");
-const emailBox = document.getElementById("emailBox");
+const phoneInput = document.getElementById("phone");
+const passInput = document.getElementById("password");
 const remember = document.getElementById("remember");
-const pass = document.getElementById("password");
-const loginBtn = document.getElementById("loginBtn");
-const msg = document.getElementById("msg");
-const supportBtn = document.getElementById("supportBtn");
+const errorBox = document.getElementById("error");
 
-/* Tab Switch */
-tabPhone.onclick = () => {
-  tabPhone.classList.add("active");
-  tabEmail.classList.remove("active");
-  phoneBox.classList.remove("hidden");
-  emailBox.classList.add("hidden");
-};
-tabEmail.onclick = () => {
-  tabEmail.classList.add("active");
-  tabPhone.classList.remove("active");
-  emailBox.classList.remove("hidden");
-  phoneBox.classList.add("hidden");
-};
-
-/* Remember Password = Show/Hide */
 remember.onchange = () => {
-  pass.type = remember.checked ? "text" : "password";
+  passInput.type = remember.checked ? "text" : "password";
 };
 
-/* Login Validation */
-loginBtn.onclick = () => {
-  msg.style.color="red";
-  msg.innerText="";
+document.getElementById("loginBtn").onclick = () => {
+  const savedPhone = localStorage.getItem("phone");
+  const savedPass = localStorage.getItem("password");
 
-  if (!emailBox.classList.contains("hidden")) {
-    const email = document.getElementById("email").value;
-    const epass = document.getElementById("emailPass").value;
-    if(email=="" || epass==""){
-      msg.innerText="❌ Please enter email and password";
-      return;
-    }
-    if(email!=="test@gmail.com" || epass!=="123456"){
-      msg.innerText="❌ Wrong Email or Password";
-      return;
-    }
-  } else {
-    const phone = document.getElementById("phone").value;
-    const p = pass.value;
-    if(phone=="" || p==""){
-      msg.innerText="❌ Please enter phone and password";
-      return;
-    }
-    if(phone!=="620000371" || p!=="abc1234567"){
-      msg.innerText="❌ Wrong ID or Password";
-      return;
-    }
+  if(!phoneInput.value || !passInput.value){
+    errorBox.innerText = "Please fill all fields";
+    return;
   }
 
-  msg.style.color="green";
-  msg.innerText="✅ Login Successful!";
+  if(phoneInput.value === savedPhone && passInput.value === savedPass){
+    errorBox.style.color="green";
+    errorBox.innerText="Login Successful!";
+  }else{
+    errorBox.style.color="red";
+    errorBox.innerText="❌ Wrong ID or Password";
+  }
 };
 
-/* Customer Support to WhatsApp */
-supportBtn.onclick = () => {
-  window.location.href="https://wa.me/916205702371?text=Hello%20I%20need%20support";
+document.getElementById("supportBtn").onclick = () => {
+  const num="916205702371";
+  const msg="Hello, mujhe login me problem aa rahi hai.";
+  window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg),"_blank");
 };
 </script>
 
