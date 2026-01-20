@@ -97,6 +97,7 @@ document.getElementById("loginBtn").onclick = () => {
   .then(()=>{
     errorBox.style.color="green";
     errorBox.innerText="Login Successful!";
+    window.location.href = "home.html";
   })
   .catch(()=>{
     errorBox.style.color="red";
