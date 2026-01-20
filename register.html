@@ -105,13 +105,43 @@ btn.onclick = () => {
     return;
   }
 
-  // Save data for login page
-  localStorage.setItem("bigpro_phone", phone.value);
-  localStorage.setItem("bigpro_pass", pass1.value);
-  localStorage.setItem("bigpro_invite", invite.value);
+// Firebase register
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  alert("Registration Successful!");
-  window.location.href="login.html";
+const auth = getAuth();
+const db = getFirestore();
+
+btn.onclick = async () => {
+  if(phone.value=="" || pass1.value=="" || pass2.value==""){
+    alert("Please fill all fields");
+    return;
+  }
+  if(pass1.value !== pass2.value){
+    alert("Passwords do not match");
+    return;
+  }
+
+  try{
+    // Fake email from phone
+    const email = phone.value + "@bigpro.com";
+
+    const userCred = await createUserWithEmailAndPassword(auth, email, pass1.value);
+    const uid = userCred.user.uid;
+
+    await setDoc(doc(db,"Users",uid),{
+      phone: phone.value,
+      invite: invite.value,
+      wallet: 0,
+      createdAt: Date.now()
+    });
+
+    alert("Registration Successful!");
+    window.location.href="login.html";
+
+  }catch(err){
+    alert(err.message);
+  }
 };
 
 /* WhatsApp Support */
