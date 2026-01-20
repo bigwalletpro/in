@@ -63,114 +63,80 @@ align-items:center;justify-content:center;font-size:22px}
 
 <div class="chat" id="supportBtn">💬</div>
 
-<script>
-const pass1 = document.getElementById("pass1");
-const pass2 = document.getElementById("pass2");
-const eye1 = document.getElementById("eye1");
-const eye2 = document.getElementById("eye2");
-const agree = document.getElementById("agree");
-const btn = document.getElementById("registerBtn");
-const phone = document.getElementById("phone");
-const invite = document.getElementById("invite");
-const supportBtn = document.getElementById("supportBtn");
-
-/* Eye toggle */
-function toggle(passId, eyeId) {
-  var pass = document.getElementById(passId);
-  var eye = document.getElementById(eyeId);
-  if (pass.type === "password") {
-    pass.type = "text";
-    eye.innerText = "👁";
-  } else {
-    pass.type = "password";
-    eye.innerText = "🙈";
-  }
-}
-eye1.onclick = () => toggle("pass1","eye1");
-eye2.onclick = () => toggle("pass2","eye2");
-
-/* Agree checkbox */
-agree.onchange = () => {
-  btn.disabled = !agree.checked;
-};
-
-/* Register button */
-btn.onclick = () => {
-  if(phone.value=="" || pass1.value=="" || pass2.value==""){
-    alert("Please fill all fields");
-    return;
-  }
-  if(pass1.value !== pass2.value){
-    alert("Passwords do not match");
-    return;
-  }
-
-// Firebase register
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-const auth = getAuth();
-const db = getFirestore();
-
-btn.onclick = async () => {
-  if(phone.value=="" || pass1.value=="" || pass2.value==""){
-    alert("Please fill all fields");
-    return;
-  }
-  if(pass1.value !== pass2.value){
-    alert("Passwords do not match");
-    return;
-  }
-
-  try{
-    // Fake email from phone
-    const email = phone.value + "@bigpro.com";
-
-    const userCred = await createUserWithEmailAndPassword(auth, email, pass1.value);
-    const uid = userCred.user.uid;
-
-    await setDoc(doc(db,"Users",uid),{
-      phone: phone.value,
-      invite: invite.value,
-      wallet: 0,
-      createdAt: Date.now()
-    });
-
-    alert("Registration Successful!");
-    window.location.href="login.html";
-
-  }catch(err){
-    alert(err.message);
-  }
-};
-
-/* WhatsApp Support */
-supportBtn.onclick = () => {
-  var phone = "916205702371";
-  var msg = "Hello, mujhe website me problem aa rahi hai. Please help.";
-  var url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
-  window.open(url, "_blank");
-};
-</script>
-<!-- Firebase CDN -->
+<!-- Firebase Compat -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
 <script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyCSKLOKjHWNImv5bmxzOTCthvQd8iWa6aQ",
-    authDomain: "big-d28e3.firebaseapp.com",
-    projectId: "big-d28e3",
-    storageBucket: "big-d28e3.firebasestorage.app",
-    messagingSenderId: "509862839346",
-    appId: "1:509862839346:web:ec80fc33a33eb19610e82b",
-    measurementId: "G-1P2EMECLBT"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyCSKLOKjHWNImv5bmxzOTCthvQd8iWa6aQ",
+  authDomain: "big-d28e3.firebaseapp.com",
+  projectId: "big-d28e3",
+  storageBucket: "big-d28e3.firebasestorage.app",
+  messagingSenderId: "509862839346",
+  appId: "1:509862839346:web:ec80fc33a33eb19610e82b"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
 
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  const db = firebase.firestore();
+// Elements
+const phone = document.getElementById("phone");
+const pass1 = document.getElementById("pass1");
+const pass2 = document.getElementById("pass2");
+const invite = document.getElementById("invite");
+const agree = document.getElementById("agree");
+const btn = document.getElementById("registerBtn");
+const eye1 = document.getElementById("eye1");
+const eye2 = document.getElementById("eye2");
+const supportBtn = document.getElementById("supportBtn");
+
+// Eye toggle
+eye1.onclick = ()=> toggle(pass1,eye1);
+eye2.onclick = ()=> toggle(pass2,eye2);
+function toggle(pass,eye){
+  if(pass.type==="password"){pass.type="text";eye.innerText="👁";}
+  else{pass.type="password";eye.innerText="🙈";}
+}
+
+// Agree checkbox
+agree.onchange = ()=> btn.disabled = !agree.checked;
+
+// Register
+btn.onclick = ()=>{
+  if(!phone.value || !pass1.value || !pass2.value){
+    alert("Please fill all fields"); return;
+  }
+  if(pass1.value!==pass2.value){
+    alert("Passwords do not match"); return;
+  }
+
+  const email = phone.value + "@bigpro.com";
+
+  auth.createUserWithEmailAndPassword(email, pass1.value)
+  .then(res=>{
+    const uid = res.user.uid;
+    return db.collection("Users").doc(uid).set({
+      phone: phone.value,
+      invite: invite.value,
+      wallet: 0,
+      createdAt: Date.now()
+    });
+  })
+  .then(()=>{
+    alert("Registration Successful!");
+    window.location.href="login.html";
+  })
+  .catch(err=> alert(err.message));
+};
+
+// WhatsApp Support
+supportBtn.onclick = ()=>{
+  const num="916205702371";
+  const msg="Hello, mujhe website me problem aa rahi hai. Please help.";
+  window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg),"_blank");
+};
 </script>
 </body>
 </html>
