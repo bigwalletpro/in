@@ -1,96 +1,156 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BIGPRO Dashboard</title>
-<style>
-body{margin:0;font-family:sans-serif;background:#f5f6fa}
-.top{
-background:linear-gradient(135deg,#ff512f,#dd2476);
-color:#fff;padding:20px;font-size:22px;font-weight:bold}
-.banner{
-margin:15px;border-radius:15px;padding:20px;
-background:linear-gradient(135deg,#ff7a18,#ffb347);
-color:#fff}
-.banner button{
-background:#fff;color:#ff512f;border:none;
-padding:10px 20px;border-radius:20px;font-weight:bold}
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: white;
+      padding-bottom: 80px;
+    }
 
-.wallet{
-margin:15px;background:#fff;border-radius:15px;
-padding:15px;display:flex;justify-content:space-between;align-items:center}
-.wallet button{border:none;padding:10px 15px;border-radius:15px;color:#fff}
-.w1{background:orange}.w2{background:red}
+    .logo-bar {
+      background: red;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 24px;
+      font-weight: bold;
+    }
 
-.row{display:flex;gap:10px;padding:0 15px}
-.card{
-flex:1;padding:20px;border-radius:15px;color:#fff;font-weight:bold;text-align:center}
-.c1{background:linear-gradient(135deg,#36d1dc,#5b86e5)}
-.c2{background:linear-gradient(135deg,#ff758c,#ff7eb3)}
-.c3{background:linear-gradient(135deg,#c471f5,#fa71cd)}
+    .banner {
+      margin: 15px;
+      height: 150px;
+      border: 3px solid red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: bold;
+    }
 
-.strip{
-margin:15px;background:#ff6b6b;color:#fff;
-padding:12px;border-radius:12px;
-display:flex;justify-content:space-around}
+    .row {
+      display: flex;
+      gap: 10px;
+      margin: 15px;
+    }
 
-.popular{margin:15px;font-weight:bold}
-.game{
-background:#fff;margin:10px 15px;padding:15px;border-radius:15px;
-display:flex;align-items:center;gap:10px}
+    .btn {
+      background: red;
+      color: white;
+      flex: 1;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
 
-.bottom{
-position:fixed;bottom:0;width:100%;background:#fff;
-display:flex;justify-content:space-around;padding:10px 0}
-.mid{
-background:#ff4757;color:#fff;width:50px;height:50px;
-border-radius:50%;display:flex;align-items:center;justify-content:center;
-margin-top:-25px;font-size:22px}
-</style>
+    .big-row {
+      display: flex;
+      gap: 15px;
+      margin: 15px;
+    }
+
+    .big-btn {
+      background: red;
+      color: white;
+      flex: 1;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      transform: rotate(-10deg);
+    }
+
+    .big-btn.right {
+      transform: rotate(10deg);
+    }
+
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0;
+      border-top: 1px solid #ccc;
+    }
+
+    .bottom-btn {
+      background: red;
+      color: white;
+      width: 60px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .invite {
+      background: red;
+      color: white;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-top: -30px;
+    }
+  </style>
 </head>
 <body>
 
-<div class="top">BIGPRO</div>
+  <!-- Logo -->
+  <div class="logo-bar">MY LOGO</div>
 
-<div class="banner">
-<h3>Weekly Slot Betting Challenge</h3>
-<p>Bet & Win up to ₹3000</p>
-<button>PLAY NOW</button>
-</div>
+  <!-- Banner -->
+  <div class="banner">BANNER</div>
 
-<div class="wallet">
-<div>💰 Wallet Balance<br><b>₹58.00</b></div>
-<div>
-<button class="w1">Withdraw</button>
-<button class="w2">Deposit</button>
-</div>
-</div>
+  <!-- Row 1 -->
+  <div class="row">
+    <div class="btn">Game Button</div>
+    <div class="btn">Game Button</div>
+  </div>
 
-<div class="row">
-<div class="card c1">🏆 Popular</div>
-<div class="card c2">🎱 Lottery</div>
-<div class="card c3">✈ Mini Games</div>
-</div>
+  <!-- Row 2 -->
+  <div class="row">
+    <div class="btn">Game Button</div>
+    <div class="btn">Game Button</div>
+    <div class="btn">Game Button</div>
+  </div>
 
-<div class="strip">
-<div>🎰 Slots</div>
-<div>🐟 Fishing</div>
-<div>⚽ Sports</div>
-<div>🎲 Casino</div>
-</div>
+  <!-- Row 3 -->
+  <div class="row">
+    <div class="btn">Game Button</div>
+    <div class="btn">Game Button</div>
+    <div class="btn">Game Button</div>
+  </div>
 
-<div class="popular">🔥 Popular</div>
-<div class="game">🎱 WIN GO</div>
-<div class="game">✈ AVIATOR</div>
-<div class="game">🏏 CRICKET</div>
+  <!-- Big Buttons -->
+  <div class="big-row">
+    <div class="big-btn">Game Button</div>
+    <div class="big-btn right">Game Button</div>
+  </div>
 
-<div class="bottom">
-<div>🏠 Home</div>
-<div>🎁 Activity</div>
-<div class="mid">🎮</div>
-<div>💼 Wallet</div>
-<div>👤 Me</div>
-</div>
+  <!-- Bottom Bar -->
+  <div class="bottom-bar">
+    <div class="bottom-btn">Btn</div>
+    <div class="bottom-btn">Btn</div>
+    <div class="invite">Invite</div>
+    <div class="bottom-btn">Btn</div>
+    <div class="bottom-btn">Account</div>
+  </div>
 
 </body>
 </html>
