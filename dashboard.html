@@ -42,14 +42,19 @@ body{
   object-fit:cover;
   display:block;
 }
-
-/* GAME GRID */
-.game-grid{
+/* GAME GRID ROWS */
+.grid-2{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:12px;
   padding:14px;
 }
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  padding:0 14px 14px;
+  }
 .game-btn{
   background:transparent;
   border-radius:18px;
