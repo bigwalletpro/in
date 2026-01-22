@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard</title>
 
 <style>
@@ -14,26 +14,35 @@
 }
 
 body{
-  background:#fff;
-  padding-bottom:80px;
+  background:#ffffff;
+  padding-bottom:90px;
 }
 
 /* TOP BAR */
 .top{
+  position:fixed;
+  top:0;
+  left:0;
   width:100%;
   background:#ff0000;
   color:#fff;
   text-align:center;
   padding:14px 0;
-  font-size:22px;
+  font-size:20px;
   font-weight:bold;
+  z-index:1000;
+}
+
+/* MAIN */
+.main{
+  padding-top:70px;
 }
 
 /* BANNER */
 .banner{
   margin:12px;
   border:3px solid red;
-  height:130px;
+  height:120px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -42,59 +51,57 @@ body{
 }
 
 /* GAME GRID */
-.games{
+.grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:8px;
-  padding:10px;
+  gap:10px;
+  padding:12px;
 }
 
-.game{
-  background:#e85b5b;
+.card{
+  background:#e65c5c;
   border-radius:14px;
   padding:10px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  color:white;
+  gap:10px;
+  color:#fff;
   font-weight:bold;
-  cursor:pointer;
+  font-size:16px;
 }
 
-.game img{
-  width:60px;
+.card img{
+  width:55px;
+  height:55px;
+  object-fit:contain;
 }
 
-.game span{
-  font-size:18px;
-}
-
-/* 3 GRID */
+/* 3 COLUMN GRID */
 .grid3{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  padding:10px;
+  gap:10px;
+  padding:0 12px;
 }
 
 /* BIG BUTTONS */
-.big{
+.bigrow{
   display:flex;
   gap:10px;
-  padding:10px;
+  padding:14px 12px;
 }
 
-.big div{
+.bigbtn{
   flex:1;
-  background:#ff0000;
-  color:white;
+  background:red;
+  color:#fff;
   height:120px;
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:20px;
   font-weight:bold;
-  transform:skewX(-6deg);
+  transform:skew(-5deg);
 }
 
 /* BOTTOM BAR */
@@ -103,101 +110,94 @@ body{
   bottom:0;
   left:0;
   width:100%;
-  background:#ffffff;
+  background:#fff;
   border-top:1px solid #ddd;
   display:flex;
   justify-content:space-around;
   align-items:center;
-  padding:6px 0;
+  padding:8px 0;
+}
+
+.bottom a{
+  text-decoration:none;
+  color:#555;
+  font-size:12px;
+  text-align:center;
 }
 
 .bottom img{
-  width:28px;
+  width:26px;
+  display:block;
+  margin:auto;
 }
 
 .invite{
-  width:56px;
-  height:56px;
   background:red;
+  width:60px;
+  height:60px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
+  margin-top:-30px;
 }
 
 .invite img{
   width:30px;
 }
 </style>
-
-<script>
-function go(name){
-  alert(name + " clicked");
-}
-</script>
 </head>
 
 <body>
 
 <div class="top">MY LOGO</div>
 
-<div class="banner">BANNER</div>
+<div class="main">
 
-<!-- TOP 2 -->
-<div class="games">
-  <div class="game" onclick="go('Lottery')">
-    <img src="Image/Lottery.png"><span>LOTTERY</span>
+  <div class="banner">BANNER</div>
+
+  <!-- 2 BIG -->
+  <div class="grid">
+    <a class="card" href="#">
+      <img src="Image/Lottery.png">
+      LOTTERY
+    </a>
+
+    <a class="card" href="#">
+      <img src="Image/Slots.png">
+      SLOTS
+    </a>
   </div>
 
-  <div class="game" onclick="go('Slots')">
-    <img src="Image/Slots.png"><span>SLOTS</span>
-  </div>
-</div>
-
-<!-- 3x GRID -->
-<div class="grid3">
-  <div class="game" onclick="go('Fishing')">
-    <img src="Image/Fishing.png"><span>FISHING</span>
-  </div>
-
-  <div class="game" onclick="go('Rummy')">
-    <img src="Image/Rummy.png"><span>RUMMY</span>
+  <!-- 3x2 -->
+  <div class="grid3">
+    <a class="card" href="#"><img src="Image/Fishing.png">FISHING</a>
+    <a class="card" href="#"><img src="Image/Rummy.png">RUMMY</a>
+    <a class="card" href="#"><img src="Image/Casino.png">CASINO</a>
+    <a class="card" href="#"><img src="Image/Popular.png">POPULAR</a>
+    <a class="card" href="#"><img src="Image/Original.png">ORIGINAL</a>
+    <a class="card" href="#"><img src="Image/Sports.png">SPORTS</a>
   </div>
 
-  <div class="game" onclick="go('Casino')">
-    <img src="Image/Casino.png"><span>CASINO</span>
+  <!-- BIG RED -->
+  <div class="bigrow">
+    <a class="bigbtn" href="#">Game Button</a>
+    <a class="bigbtn" href="#">Game Button</a>
   </div>
 
-  <div class="game" onclick="go('Popular')">
-    <img src="Image/Popular.png"><span>POPULAR</span>
-  </div>
-
-  <div class="game" onclick="go('Original')">
-    <img src="Image/Original.png"><span>ORIGINAL</span>
-  </div>
-
-  <div class="game" onclick="go('Sports')">
-    <img src="Image/Sports.png"><span>SPORTS</span>
-  </div>
-</div>
-
-<!-- BIG -->
-<div class="big">
-  <div onclick="go('Big Game 1')">Game Button</div>
-  <div onclick="go('Big Game 2')">Game Button</div>
 </div>
 
 <!-- BOTTOM -->
 <div class="bottom">
-  <img src="Image/Home.png" onclick="go('Home')">
-  <img src="Image/Activity.png" onclick="go('Activity')">
+  <a href="#"><img src="Image/Home.png">Home</a>
+  <a href="#"><img src="Image/Activity.png">Activity</a>
 
-  <div class="invite" onclick="go('Invite')">
+  <div class="invite">
     <img src="Image/Invite.png">
   </div>
 
-  <img src="Image/Wallet.png" onclick="go('Wallet')">
-  <img src="Image/Account.png" onclick="go('Account')">
+  <a href="#"><img src="Image/Wallet.png">Wallet</a>
+  <a href="#"><img src="Image/Account.png">Account</a>
 </div>
 
 </body>
