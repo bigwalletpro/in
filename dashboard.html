@@ -2,182 +2,224 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Dashboard</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif;}
-body{background:#fff;padding-bottom:90px}
-
-/* TOP BAR */
-.top{
-  background:red;
-  color:#fff;
-  text-align:center;
-  padding:14px;
-  font-size:20px;
-  font-weight:bold;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
-/* BANNER */
+body{
+  background:#ffffff;
+  padding-bottom:95px;
+}
+
+/* ================= TOP BAR ================= */
+.topbar{
+  background:#ff0000;
+  color:#fff;
+  text-align:center;
+  font-size:22px;
+  font-weight:700;
+  padding:14px 0;
+}
+
+/* ================= BANNER ================= */
 .banner{
-  margin:12px;
-  height:120px;
+  margin:14px;
   border:3px solid red;
+  height:145px;
+  border-radius:10px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:28px;
-  font-weight:bold;
+  overflow:hidden;
 }
 
-/* GAME GRID */
-.games{
+.banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* ================= GAME GRID ================= */
+.game-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  padding:10px;
+  gap:12px;
+  padding:14px;
 }
-.game{
-  background:#e85b5b;
-  border-radius:14px;
-  padding:10px;
+
+.game-btn{
+  background:#e66b6b;
+  border-radius:16px;
+  height:92px;
   display:flex;
   align-items:center;
+  padding:10px;
   gap:10px;
   color:#fff;
-  font-weight:bold;
-  cursor:pointer;
+  font-weight:700;
 }
-.game img{
-  width:55px;
-  height:55px;
+
+.game-btn img{
+  width:58px;
+  height:58px;
   object-fit:contain;
 }
 
-/* BIG BUTTONS */
-.big{
-  display:flex;
-  gap:10px;
-  padding:10px;
+.game-btn span{
+  font-size:18px;
 }
-.big div{
+
+/* ================= BIG BUTTONS ================= */
+.big-btn-row{
+  display:flex;
+  gap:12px;
+  padding:14px;
+}
+
+.big-btn{
   flex:1;
-  background:red;
-  color:#fff;
-  height:120px;
+  height:135px;
+  background:#ff0000;
+  border-radius:18px;
   display:flex;
   align-items:center;
   justify-content:center;
+  color:#fff;
   font-size:22px;
-  font-weight:bold;
-  border-radius:12px;
-  cursor:pointer;
+  font-weight:700;
 }
 
-/* BOTTOM BAR */
-.bottom{
+/* ================= BOTTOM NAV ================= */
+.bottom-nav{
   position:fixed;
   bottom:0;
   left:0;
   width:100%;
-  background:#fff;
-  border-top:1px solid #ccc;
+  height:70px;
+  background:#ffffff;
+  border-top:1px solid #ddd;
   display:flex;
   justify-content:space-around;
   align-items:center;
-  height:70px;
 }
-.bottom div{
+
+.nav-item{
   text-align:center;
   font-size:12px;
+  color:#777;
 }
-.bottom img{
+
+.nav-item img{
   width:26px;
+  display:block;
+  margin:auto;
 }
-.invite{
-  background:red;
-  width:60px;
-  height:60px;
+
+/* INVITE BUTTON */
+.invite-btn{
+  width:62px;
+  height:62px;
+  background:#ff0000;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
+  margin-top:-35px;
 }
-.invite img{width:30px}
+
+.invite-btn img{
+  width:30px;
+}
 </style>
 </head>
 
 <body>
 
-<div class="top">MY LOGO</div>
+<!-- TOP -->
+<div class="topbar">MY LOGO</div>
 
-<div class="banner">BANNER</div>
+<!-- BANNER -->
+<div class="banner">
+  <img src="Image/banner.jpg">
+</div>
 
 <!-- GAME BUTTONS -->
-<div class="games">
+<div class="game-grid">
 
-  <div class="game" onclick="alert('Lottery')">
-    <img src="Image/Lottery.png"> LOTTERY
+  <div class="game-btn">
+    <img src="Image/Lottery.png"><span>LOTTERY</span>
   </div>
 
-  <div class="game" onclick="alert('Slots')">
-    <img src="Image/Slots.png"> SLOTS
+  <div class="game-btn">
+    <img src="Image/Slots.png"><span>SLOTS</span>
   </div>
 
-  <div class="game" onclick="alert('Fishing')">
-    <img src="Image/Fishing.png"> FISHING
+  <div class="game-btn">
+    <img src="Image/Fishing.png"><span>FISHING</span>
   </div>
 
-  <div class="game" onclick="alert('Rummy')">
-    <img src="Image/Rummy.png"> RUMMY
+  <div class="game-btn">
+    <img src="Image/Rummy.png"><span>RUMMY</span>
   </div>
 
-  <div class="game" onclick="alert('Casino')">
-    <img src="Image/Casino.png"> CASINO
+  <div class="game-btn">
+    <img src="Image/Casino.png"><span>CASINO</span>
   </div>
 
-  <div class="game" onclick="alert('Popular')">
-    <img src="Image/Popular.png"> POPULAR
+  <div class="game-btn">
+    <img src="Image/Popular.png"><span>POPULAR</span>
   </div>
 
-  <div class="game" onclick="alert('Original')">
-    <img src="Image/Original.png"> ORIGINAL
+  <div class="game-btn">
+    <img src="Image/Original.png"><span>ORIGINAL</span>
   </div>
 
-  <div class="game" onclick="alert('Sports')">
-    <img src="Image/Sports.png"> SPORTS
+  <div class="game-btn">
+    <img src="Image/Sports.png"><span>SPORTS</span>
   </div>
 
 </div>
 
-<!-- BIG GAME BUTTONS -->
-<div class="big">
-  <div onclick="alert('Game 1')">Game Button</div>
-  <div onclick="alert('Game 2')">Game Button</div>
+<!-- BIG BUTTONS -->
+<div class="big-btn-row">
+  <div class="big-btn">Game Button</div>
+  <div class="big-btn">Game Button</div>
 </div>
 
 <!-- BOTTOM NAV -->
-<div class="bottom">
-  <div onclick="alert('Home')">
-    <img src="Image/Home.png"><br>Home
+<div class="bottom-nav">
+
+  <div class="nav-item">
+    <img src="Image/Home.png">
+    Home
   </div>
 
-  <div onclick="alert('Activity')">
-    <img src="Image/Activity.png"><br>Activity
+  <div class="nav-item">
+    <img src="Image/Activity.png">
+    Activity
   </div>
 
-  <div class="invite" onclick="alert('Invite')">
+  <div class="invite-btn">
     <img src="Image/Invite.png">
   </div>
 
-  <div onclick="alert('Wallet')">
-    <img src="Image/Wallet.png"><br>Wallet
+  <div class="nav-item">
+    <img src="Image/Wallet.png">
+    Wallet
   </div>
 
-  <div onclick="alert('Account')">
-    <img src="Image/Account.png"><br>Account
+  <div class="nav-item">
+    <img src="Image/Account.png">
+    Account
   </div>
+
 </div>
 
 </body>
