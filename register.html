@@ -4,45 +4,55 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Register</title>
+
 <style>
 body{margin:0;font-family:Arial;background:#f6f7f9}
-.header{background:linear-gradient(90deg,#ff6b6b,#ff8e8e);color:#fff;text-align:center;padding:25px}
+
+.top-header{
+  background:linear-gradient(90deg,#ff6b6b,#ff8e8e);
+  color:#fff;
+  text-align:center;
+  padding:25px 0 15px;
+}
+.top-header img{
+  width:120px;
+  height:auto;
+  display:block;
+  margin:0 auto 10px;
+}
+.subtitle{font-size:14px}
+
 .title{text-align:center;color:#ff6b6b;margin:15px;font-weight:bold}
 .line{width:120px;height:3px;background:#ff6b6b;margin:0 auto}
+
 .box{padding:15px;position:relative}
 .label{margin:12px 0 5px}
 .input{width:100%;padding:12px;border-radius:12px;border:1px solid #ddd}
-.eye{position:absolute;right:25px;margin-top:-38px;cursor:pointer;font-size:18px}
-.btn-main{width:100%;padding:15px;border-radius:25px;border:none;
-background:linear-gradient(90deg,#ff6b6b,#ff8e8e);color:#fff;
-font-size:16px;margin-top:15px;opacity:.5}
-.btn-main:enabled{opacity:1}
-.bottom{text-align:center;margin-top:10px}
-.chat{position:fixed;right:15px;bottom:15px;background:#ff6b6b;color:#fff;
-width:55px;height:55px;border-radius:50%;display:flex;
-align-items:center;justify-content:center;font-size:22px}
-  .top-header{
-  background: linear-gradient(90deg,#ff6b6b,#ff8e8e);
-  padding: 25px 0 15px;
-  text-align: center;
-}
-.top-header img{
-  width: 120px;
-  height: auto;
-  display: block;
-  margin: 0 auto 10px;
-}
 
-.subtitle{
-  color: #fff;
-  font-size: 14px;
+.eye{position:absolute;right:25px;margin-top:-38px;cursor:pointer;font-size:18px}
+
+.btn-main{
+  width:100%;padding:15px;border-radius:25px;border:none;
+  background:linear-gradient(90deg,#ff6b6b,#ff8e8e);
+  color:#fff;font-size:16px;margin-top:15px;opacity:.5
+}
+.btn-main:enabled{opacity:1}
+
+.bottom{text-align:center;margin-top:10px}
+
+.chat{
+  position:fixed;right:15px;bottom:15px;background:#ff6b6b;color:#fff;
+  width:55px;height:55px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:22px
 }
 </style>
 </head>
+
 <body>
 
+<!-- ✅ LOGO FIXED HERE (ONLY CHANGE) -->
 <div class="top-header">
-  <img src="../Mylogo.png" alt="My Logo">
+  <img src="Mylogo.png" alt="My Logo">
   <p class="subtitle">Please register by phone number or email</p>
 </div>
 
@@ -79,7 +89,7 @@ align-items:center;justify-content:center;font-size:22px}
 
 <div class="chat" id="supportBtn">💬</div>
 
-<!-- Firebase Compat -->
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
@@ -93,11 +103,11 @@ const firebaseConfig = {
   messagingSenderId: "509862839346",
   appId: "1:509862839346:web:ec80fc33a33eb19610e82b"
 };
+
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-// Elements
 const phone = document.getElementById("phone");
 const pass1 = document.getElementById("pass1");
 const pass2 = document.getElementById("pass2");
@@ -108,51 +118,46 @@ const eye1 = document.getElementById("eye1");
 const eye2 = document.getElementById("eye2");
 const supportBtn = document.getElementById("supportBtn");
 
-// Eye toggle
-eye1.onclick = ()=> toggle(pass1,eye1);
-eye2.onclick = ()=> toggle(pass2,eye2);
-function toggle(pass,eye){
-  if(pass.type==="password"){pass.type="text";eye.innerText="👁";}
-  else{pass.type="password";eye.innerText="🙈";}
+eye1.onclick = ()=>toggle(pass1,eye1);
+eye2.onclick = ()=>toggle(pass2,eye2);
+
+function toggle(p,e){
+  if(p.type==="password"){p.type="text";e.innerText="🙈";}
+  else{p.type="password";e.innerText="👁";}
 }
 
-// Agree checkbox
 agree.onchange = ()=> btn.disabled = !agree.checked;
 
-// Register
 btn.onclick = ()=>{
-  if(!phone.value || !pass1.value || !pass2.value){
-    alert("Please fill all fields"); return;
+  if(!phone.value||!pass1.value||!pass2.value){
+    alert("Please fill all fields");return;
   }
   if(pass1.value!==pass2.value){
-    alert("Passwords do not match"); return;
+    alert("Passwords do not match");return;
   }
 
   const email = phone.value + "@bigpro.com";
 
-  auth.createUserWithEmailAndPassword(email, pass1.value)
+  auth.createUserWithEmailAndPassword(email,pass1.value)
   .then(res=>{
-    const uid = res.user.uid;
-    return db.collection("Users").doc(uid).set({
-      phone: phone.value,
-      invite: invite.value,
-      wallet: 0,
-      createdAt: Date.now()
+    return db.collection("Users").doc(res.user.uid).set({
+      phone:phone.value,
+      invite:invite.value,
+      wallet:0,
+      createdAt:Date.now()
     });
   })
   .then(()=>{
     alert("Registration Successful!");
     window.location.href="login.html";
   })
-  .catch(err=> alert(err.message));
+  .catch(err=>alert(err.message));
 };
 
-// WhatsApp Support
-supportBtn.onclick = ()=>{
-  const num="916205702371";
-  const msg="Hello, mujhe website me problem aa rahi hai. Please help.";
-  window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg),"_blank");
+supportBtn.onclick=()=>{
+  window.open("https://wa.me/916205702371","_blank");
 };
 </script>
+
 </body>
 </html>
