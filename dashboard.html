@@ -125,10 +125,17 @@ body{
   text-align:center;
   padding:12px 0;
 }
-
-.header .top-logo{
+  .header .top-logo{
   height:40px;
   width:auto;
+}
+  .nav-item.active img{
+  filter: brightness(0) saturate(100%) invert(24%) sepia(96%) saturate(7494%) hue-rotate(356deg) brightness(95%) contrast(118%);
+}
+
+.nav-item.active span{
+  color: red;
+  font-weight: bold;
 }
 </style>
 </head>
