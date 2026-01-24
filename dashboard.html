@@ -19,13 +19,14 @@ body{
 }
 
 /* TOP BAR */
-.topbar{
-  background:#ff0000;
-  color:#fff;
+.header{
+  background:red;
   text-align:center;
-  font-size:22px;
-  font-weight:bold;
-  padding:14px 0;
+  padding:12px 0;
+}
+.header .top-logo{
+  height:40px;
+  width:auto;
 }
 
 /* BANNER */
@@ -40,10 +41,9 @@ body{
   width:100%;
   height:100%;
   object-fit:cover;
-  display:block;
 }
 
-/* ===== LOTTERY + SLOTS (2 ROW) ===== */
+/* TOP GAMES */
 .top-games{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -54,24 +54,23 @@ body{
   height:95px;
 }
 
-/* ===== 6 GAMES (3 x 2 GRID) ===== */
+/* GAME GRID */
 .game-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:6px;              /* 🔥 white space कम */
+  gap:6px;
   padding:0 14px 14px;
 }
 .game-btn{
   background:#e56a6a;
   border-radius:18px;
-  height:115px;         /* 🔥 थोड़ा बड़ा */
+  height:115px;
   overflow:hidden;
 }
 .game-btn img{
   width:100%;
   height:100%;
-  object-fit:cover;     /* 🔥 stretch नहीं होगा */
-  display:block;
+  object-fit:cover;
 }
 
 /* BIG BUTTONS */
@@ -100,9 +99,18 @@ body{
   justify-content:space-around;
   align-items:center;
 }
+
+.nav-item{
+  text-align:center;
+}
 .nav-item img{
   width:45px;
   height:45px;
+}
+
+/* ACTIVE */
+.nav-item.active img{
+  filter: brightness(0) saturate(100%) invert(24%) sepia(96%) saturate(7494%) hue-rotate(356deg) brightness(95%) contrast(118%);
 }
 
 /* INVITE */
@@ -120,52 +128,35 @@ body{
   width:72px;
   height:72px;
 }
-.header{
-  background:red;
-  text-align:center;
-  padding:12px 0;
-}
-  .header .top-logo{
-  height:40px;
-  width:auto;
-}
-  .nav-item.active img{
-  filter: brightness(0) saturate(100%) invert(24%) sepia(96%) saturate(7494%) hue-rotate(356deg) brightness(95%) contrast(118%);
-}
-
-.nav-item.active span{
-  color: red;
-  font-weight: bold;
-}
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
-  <img src="Image/Mylogo.png" alt="My Logo" class="top-logo">
+  <img src="Image/Mylogo.png" class="top-logo">
 </div>
 
 <!-- BANNER -->
 <div class="banner">
-  <img src="Image/Banner.jpg" onerror="this.src='Image/Lottery.png'">
+  <img src="Image/Banner.jpg">
 </div>
 
-<!-- LOTTERY + SLOTS (UNCHANGED) -->
+<!-- TOP GAMES -->
 <div class="top-games">
-  <div class="game-btn"><img src="Image/Lottery.png"></div>
-  <div class="game-btn"><img src="Image/Slots.png"></div>
+  <a href="#" class="game-btn"><img src="Image/Lottery.png"></a>
+  <a href="#" class="game-btn"><img src="Image/Slots.png"></a>
 </div>
 
-<!-- 6 GAME BUTTONS (3 x 2) -->
+<!-- GAME GRID -->
 <div class="game-grid">
-  <div class="game-btn"><img src="Image/Fishing.png"></div>
-  <div class="game-btn"><img src="Image/Rummy.png"></div>
-  <div class="game-btn"><img src="Image/Casino.png"></div>
-
-  <div class="game-btn"><img src="Image/Popular.png"></div>
-  <div class="game-btn"><img src="Image/Original.png"></div>
-  <div class="game-btn"><img src="Image/Sports.png"></div>
+  <a href="#" class="game-btn"><img src="Image/Fishing.png"></a>
+  <a href="#" class="game-btn"><img src="Image/Rummy.png"></a>
+  <a href="#" class="game-btn"><img src="Image/Casino.png"></a>
+  <a href="#" class="game-btn"><img src="Image/Popular.png"></a>
+  <a href="#" class="game-btn"><img src="Image/Original.png"></a>
+  <a href="#" class="game-btn"><img src="Image/Sports.png"></a>
 </div>
 
 <!-- BIG BUTTONS -->
@@ -176,17 +167,24 @@ body{
 
 <!-- BOTTOM NAV -->
 <div class="bottom-nav">
-  <div class="nav-item"><img src="Image/Home.png"></div>
-  <div class="nav-item"><img src="Image/Activity.png"></div>
+  <a href="dashboard.html" class="nav-item active">
+    <img src="Image/Home.png">
+  </a>
+
+  <a href="activity.html" class="nav-item">
+    <img src="Image/Activity.png">
+  </a>
 
   <div class="invite">
     <img src="Image/Invite.png">
   </div>
 
-  <div class="nav-item"><img src="Image/Wallet.png"></div>
-  <a href="account.html" class="nav-item active">
-  <img src="Image/Account.png">
-  <p></p>
+  <a href="wallet.html" class="nav-item">
+    <img src="Image/Wallet.png">
+  </a>
+
+  <a href="account.html" class="nav-item">
+    <img src="Image/Account.png">
   </a>
 </div>
 
