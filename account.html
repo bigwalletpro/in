@@ -10,11 +10,13 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Arial, Helvetica, sans-serif;
 }
+
 body{
   background:#f5f6fb;
-  padding-bottom:110px;
+  padding-bottom:90px;
+  overflow-x:hidden;
 }
 
 /* HEADER */
@@ -35,6 +37,7 @@ body{
   align-items:center;
   gap:12px;
   color:#fff;
+  overflow:hidden;
 }
 .profile img{
   width:60px;
@@ -42,16 +45,13 @@ body{
   border-radius:50%;
   object-fit:cover;
 }
-.profile .info{flex:1;}
-.name{
-  font-size:16px;
-  font-weight:bold;
-}
+.info{flex:1;}
+.name{font-size:16px;font-weight:bold;}
 .vip{
   background:#fff;
   color:#ff5a5a;
   font-size:11px;
-  padding:2px 8px;
+  padding:2px 6px;
   border-radius:10px;
   margin-left:6px;
 }
@@ -64,22 +64,16 @@ body{
   display:inline-block;
   margin-top:4px;
 }
-.last{
-  font-size:12px;
-  opacity:.9;
-}
+.last{font-size:12px;opacity:.9;}
 
 /* BALANCE */
 .balance{
   background:#fff;
   margin:14px;
   padding:16px;
-  border-radius:16px;
+  border-radius:14px;
 }
-.balance h4{
-  color:#777;
-  font-size:14px;
-}
+.balance h4{color:#777;font-size:14px;}
 .amount{
   font-size:28px;
   font-weight:bold;
@@ -102,12 +96,10 @@ body{
 }
 .action img{
   width:40px;
-  height:40px;
-  object-fit:contain;
   margin-bottom:6px;
 }
 
-/* HISTORY CARDS */
+/* CARDS */
 .cards{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -117,24 +109,14 @@ body{
 .card{
   background:#fff;
   border-radius:16px;
-  padding:16px;
+  padding:14px;
 }
-.card img{
-  width:36px;
-}
-.card h4{
-  margin-top:8px;
-  font-size:14px;
-}
-.card p{
-  font-size:12px;
-  color:#888;
-}
+.card img{width:36px;}
+.card h4{margin-top:6px;font-size:14px;}
+.card p{font-size:12px;color:#888;}
 
 /* LOGOUT */
-.logout-wrap{
-  margin:24px 14px;
-}
+.logout-wrap{margin:20px 14px;}
 .logout-btn{
   width:100%;
   height:48px;
@@ -143,10 +125,6 @@ body{
   background:transparent;
   color:#ff6a6a;
   font-size:16px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
 }
 
 /* BOTTOM NAV */
@@ -161,22 +139,34 @@ body{
   display:flex;
   justify-content:space-around;
   align-items:center;
+  z-index:999;
 }
 
 .nav-item{
   text-align:center;
+  font-size:12px;
+  color:#999;
 }
-
 .nav-item img{
-  width:45px;
-  height:45px;
-  opacity:0.6;
+  width:30px;
+  height:30px;
+  display:block;
+  margin:0 auto;
 }
+.nav-item.active{color:red;}
 
-.nav-item.active img{
-  opacity:1;
-  filter: brightness(0) saturate(100%) invert(24%) sepia(96%) saturate(7494%) hue-rotate(356deg) brightness(95%) contrast(118%);
-  }
+.invite{
+  width:64px;
+  height:64px;
+  margin-top:-32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.invite img{
+  width:72px;
+  height:72px;
+}
 </style>
 </head>
 
@@ -191,9 +181,7 @@ body{
 <div class="profile">
   <img src="Image/Profile.jpg">
   <div class="info">
-    <div class="name">
-      MEMBERNNG4RTR8 <span class="vip">VIP0</span>
-    </div>
+    <div class="name">MEMBERNNG4RTR8 <span class="vip">VIP0</span></div>
     <div class="uid">UID | 18187762</div>
     <div class="last">Last login: 2026-01-24 17:03:25</div>
   </div>
@@ -209,40 +197,35 @@ body{
 <div class="actions">
   <div class="action">
     <img src="Image/Deposit.png">
-    <div>Deposit</div>
+    Deposit
   </div>
-
   <div class="action">
     <img src="Image/Withdraw.png">
-    <div>Withdraw</div>
+    Withdraw
   </div>
-
   <div class="action">
     <img src="Image/Vip.png">
-    <div>VIP</div>
+    VIP
   </div>
 </div>
 
-<!-- HISTORY -->
+<!-- CARDS -->
 <div class="cards">
   <div class="card">
     <img src="Image/Game.history.png">
     <h4>Game History</h4>
     <p>My game history</p>
   </div>
-
   <div class="card">
     <img src="Image/Transaction.png">
     <h4>Transaction</h4>
     <p>My transaction history</p>
   </div>
-
   <div class="card">
     <img src="Image/Deposit.history.png">
     <h4>Deposit History</h4>
     <p>My deposit history</p>
   </div>
-
   <div class="card">
     <img src="Image/Withdraw.history.png">
     <h4>Withdraw History</h4>
@@ -252,35 +235,35 @@ body{
 
 <!-- LOGOUT -->
 <div class="logout-wrap">
-  <button class="logout-btn"> Log out</button>
+  <button class="logout-btn">Log out</button>
 </div>
 
 <!-- BOTTOM NAV -->
 <div class="bottom-nav">
   <a href="dashboard.html" class="nav-item">
     <img src="Image/Home.png">
-    <div></div>
+    <div>Home</div>
   </a>
 
-  <a href="#" class="nav-item">
+  <a href="activity.html" class="nav-item">
     <img src="Image/Activity.png">
-    <div></div>
+    <div>Activity</div>
   </a>
 
   <div class="invite">
     <img src="Image/Invite.png">
   </div>
 
-  <a href="#" class="nav-item">
+  <a href="wallet.html" class="nav-item">
     <img src="Image/Wallet.png">
-    <div></div>
+    <div>Wallet</div>
   </a>
 
   <a href="account.html" class="nav-item active">
     <img src="Image/Account.png">
-    <div></div>
+    <div>Account</div>
   </a>
 </div>
 
 </body>
-</html>
+    </html>
