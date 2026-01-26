@@ -12,6 +12,7 @@
   box-sizing:border-box;
   font-family:Arial, Helvetica, sans-serif;
 }
+
 body{
   background:#f6f7fb;
   padding-bottom:90px;
@@ -43,10 +44,7 @@ body{
   padding:20px 14px 26px;
   text-align:center;
 }
-.top .big{
-  font-size:28px;
-  font-weight:bold;
-}
+.top .big{font-size:28px;font-weight:bold;}
 .top .sub{
   margin-top:6px;
   background:#fff;
@@ -56,11 +54,7 @@ body{
   font-size:13px;
   display:inline-block;
 }
-.top p{
-  margin-top:8px;
-  font-size:12px;
-  opacity:.9;
-}
+.top p{margin-top:8px;font-size:12px;opacity:.9}
 
 /* STATS */
 .stats{
@@ -75,21 +69,11 @@ body{
   border-right:1px solid #eee;
 }
 .stats .box:last-child{border-right:none;}
-.stats h4{
-  font-size:14px;
-  color:#ff6a6a;
-  margin-bottom:8px;
-}
-.stats p{
-  font-size:12px;
-  color:#555;
-  margin:6px 0;
-}
+.stats h4{font-size:14px;color:#ff6a6a;margin-bottom:8px;}
+.stats p{font-size:12px;color:#555;margin:6px 0}
 
-/* INVITE BUTTON */
-.invite-main{
-  margin:14px;
-}
+/* INVITE MAIN BUTTON */
+.invite-main{margin:14px;}
 .invite-main button{
   width:100%;
   height:46px;
@@ -111,21 +95,14 @@ body{
   justify-content:space-between;
   margin-bottom:12px;
 }
-.left{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
+.left{display:flex;align-items:center;gap:10px;}
 .icon{
   width:36px;
   height:36px;
   border-radius:50%;
   background:#ffe3e3;
 }
-.code{
-  font-size:13px;
-  color:#999;
-}
+.code{font-size:13px;color:#999}
 
 /* PROMO */
 .promo{
@@ -134,10 +111,7 @@ body{
   border-radius:14px;
   padding:14px;
 }
-.promo h4{
-  font-size:14px;
-  margin-bottom:10px;
-}
+.promo h4{font-size:14px;margin-bottom:10px;}
 .promo-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -149,12 +123,9 @@ body{
   padding:12px;
   text-align:center;
 }
-.promo-grid strong{
-  display:block;
-  font-size:16px;
-}
+.promo-grid strong{display:block;font-size:16px}
 
-/* BOTTOM NAV */
+/* ===== BOTTOM NAV ===== */
 .bottom-nav{
   position:fixed;
   bottom:0;
@@ -166,12 +137,15 @@ body{
   display:flex;
   justify-content:space-around;
   align-items:center;
+  z-index:999;
 }
 
+/* NAV ITEM */
 .nav-item{
   text-align:center;
   font-size:12px;
   color:#999;
+  text-decoration:none;
 }
 .nav-item img{
   width:45px;
@@ -179,23 +153,27 @@ body{
   display:block;
   margin:0 auto;
 }
-.nav-item.active{color:red;}
 
-.invite{
-  width:64px;
-  height:64px;
-  margin-top:-32px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.invite img{
-  width:72px;
-  height:72px;
+/* ACTIVE */
+.nav-item.active{
+  color:red;
 }
 .nav-item.active img{
- filter: brightness(0) saturate(100%) invert(18%) sepia(96%) 
-        saturate(7450%) hue-rotate(356deg) brightness(95%) contrast(120%);
+  filter: brightness(0) saturate(100%) invert(18%) sepia(96%)
+          saturate(7450%) hue-rotate(356deg) brightness(95%) contrast(120%);
+}
+
+/* INVITE CENTER BUTTON */
+.nav-item.invite{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:-32px;
+  z-index:1000;
+}
+.nav-item.invite img{
+  width:72px;
+  height:72px;
 }
 </style>
 </head>
@@ -204,7 +182,7 @@ body{
 
 <!-- HEADER -->
 <div class="header">
-  <a href="dashboard.html"></a>
+  <a href="index.html">←</a>
   Agency
 </div>
 
@@ -260,27 +238,31 @@ body{
 <!-- BOTTOM NAV -->
 <div class="bottom-nav">
 
-  <a href="dashboard.html" class="nav-item">
+  <a href="index.html" class="nav-item">
     <img src="Image/Home.png">
+    Home
   </a>
 
   <a href="activity.html" class="nav-item">
     <img src="Image/Activity.png">
+    Activity
   </a>
 
-  <a href="invite.html" class="invite-btn">
+  <a href="invite.html" class="nav-item invite active">
     <img src="Image/Invite.png">
   </a>
 
   <a href="wallet.html" class="nav-item">
     <img src="Image/Wallet.png">
+    Wallet
   </a>
 
-  <a href="account.html" class="nav-item active">
+  <a href="account.html" class="nav-item">
     <img src="Image/Account.png">
+    Account
   </a>
 
 </div>
 
 </body>
-</html>
+  </html>
