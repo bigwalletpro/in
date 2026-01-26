@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agency</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+body{
+  background:#f5f6fb;
+  padding-bottom:90px;
+}
+
+/* HEADER */
+.header{
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  border-bottom:1px solid #eee;
+  font-size:18px;
+  font-weight:bold;
+  position:relative;
+}
+.header .icon{
+  position:absolute;
+  right:14px;
+  width:22px;
+}
+
+/* LIST */
+.list{
+  padding:14px;
+}
+.item{
+  background:#fff;
+  border-radius:14px;
+  padding:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+.item-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+}
+.item-left img{
+  width:28px;
+}
+.arrow{
+  font-size:20px;
+  color:#999;
+}
+
+/* COPY */
+.copy{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#666;
+  font-size:14px;
+}
+.copy span{
+  color:#000;
+}
+.copy img{
+  width:20px;
+}
+
+/* PROMOTION DATA */
+.promo{
+  background:#fff;
+  border-radius:16px;
+  padding:16px;
+  margin:14px;
+}
+.promo-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:bold;
+  margin-bottom:14px;
+}
+.promo-title img{
+  width:22px;
+}
+.promo-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  text-align:center;
+}
+.promo-box h3{
+  font-size:18px;
+}
+.promo-box p{
+  font-size:12px;
+  color:#777;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:75px;
+  background:#fff;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+}
+.nav-item{
+  text-align:center;
+  font-size:12px;
+  color:#999;
+}
+.nav-item img{
+  width:45px;
+}
+.nav-item.active{
+  color:red;
+}
+
+/* INVITE CENTER */
+.invite{
+  width:64px;
+  height:64px;
+  margin-top:-32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.invite img{
+  width:72px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  Agency
+  <img src="Image/Notification.png" class="icon">
+</div>
+
+<!-- LIST -->
+<div class="list">
+
+  <div class="item">
+    <div class="item-left">
+      <img src="Image/Partner.png">
+      Partner rewards
+    </div>
+    <div class="arrow">›</div>
+  </div>
+
+  <div class="item">
+    <div class="item-left">
+      <img src="Image/Copy.png">
+      Copy invitation code
+    </div>
+    <div class="copy">
+      <span>0000000000000</span>
+      <img src="Image/Copy.icon.png">
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-left">
+      <img src="Image/Subordinate.png">
+      Subordinate data
+    </div>
+    <div class="arrow">›</div>
+  </div>
+
+  <div class="item">
+    <div class="item-left">
+      <img src="Image/Commission.png">
+      Commission detail
+    </div>
+    <div class="arrow">›</div>
+  </div>
+
+  <div class="item">
+    <div class="item-left">
+      <img src="Image/Rules.png">
+      Invitation rules
+    </div>
+    <div class="arrow">›</div>
+  </div>
+
+  <div class="item">
+    <div class="item-left">
+      <img src="Image/Support.png">
+      Agent line customer service
+    </div>
+    <div class="arrow">›</div>
+  </div>
+
+  <div class="item">
+    <div class="item-left">
+      <img src="Image/Rebate.png">
+      Rebate ratio
+    </div>
+    <div class="arrow">›</div>
+  </div>
+
+</div>
+
+<!-- PROMOTION DATA -->
+<div class="promo">
+  <div class="promo-title">
+    <img src="Image/Promotion.png">
+    promotion data
+  </div>
+
+  <div class="promo-grid">
+    <div class="promo-box">
+      <h3>0</h3>
+      <p>This Week</p>
+    </div>
+    <div class="promo-box">
+      <h3>0</h3>
+      <p>Total commission</p>
+    </div>
+    <div class="promo-box">
+      <h3>0</h3>
+      <p>direct subordinate</p>
+    </div>
+    <div class="promo-box">
+      <h3>0</h3>
+      <p>Total number of subordinates in the team</p>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="dashboard.html" class="nav-item">
+    <img src="Image/Home.png"><div>Home</div>
+  </a>
+
+  <a href="activity.html" class="nav-item">
+    <img src="Image/Activity.png"><div>Activity</div>
+  </a>
+
+  <div class="invite">
+    <img src="Image/Invite.png">
+  </div>
+
+  <a href="wallet.html" class="nav-item">
+    <img src="Image/Wallet.png"><div>Wallet</div>
+  </a>
+
+  <a href="account.html" class="nav-item">
+    <img src="Image/Account.png"><div>Account</div>
+  </a>
+</div>
+
+</body>
+</html>
