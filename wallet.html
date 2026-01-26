@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wallet</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+  background:#f5f6fb;
+  padding-bottom:90px;
+}
+
+/* HEADER */
+.wallet-header{
+  background:linear-gradient(180deg,#ff6a6a,#ff9a8b);
+  color:#fff;
+  padding:16px;
+  text-align:center;
+  position:relative;
+}
+
+.wallet-header .back{
+  position:absolute;
+  left:12px;
+  top:18px;
+  font-size:20px;
+  text-decoration:none;
+  color:#fff;
+}
+
+.wallet-header h2{
+  font-size:18px;
+  font-weight:600;
+}
+
+.wallet-balance{
+  margin-top:20px;
+}
+
+.wallet-balance img{
+  width:46px;
+}
+
+.wallet-balance h1{
+  font-size:30px;
+  margin-top:8px;
+}
+
+.wallet-balance p{
+  font-size:14px;
+  opacity:.9;
+}
+
+.wallet-stats{
+  display:flex;
+  justify-content:space-around;
+  margin-top:14px;
+  font-size:13px;
+}
+
+/* CARD */
+.card{
+  background:#fff;
+  margin:14px;
+  border-radius:16px;
+  padding:16px;
+}
+
+/* CIRCLES */
+.circle-wrap{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.circle{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  border:10px solid #ff6a6a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+}
+
+.circle.gray{
+  border-color:#eee;
+  color:#999;
+}
+
+.circle-text{
+  text-align:center;
+  margin-top:6px;
+  font-size:14px;
+}
+
+/* TRANSFER */
+.transfer-btn{
+  margin-top:16px;
+  background:linear-gradient(90deg,#ff6a6a,#ff9a8b);
+  border:none;
+  color:#fff;
+  height:48px;
+  width:100%;
+  border-radius:30px;
+  font-size:16px;
+}
+
+/* ACTION ICONS */
+.wallet-actions{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:16px;
+}
+
+.wallet-action{
+  text-align:center;
+  font-size:12px;
+}
+
+.wallet-action img{
+  width:40px;
+  margin-bottom:6px;
+}
+
+/* GAME WALLET */
+.game-wallets{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:14px;
+}
+
+.game-box{
+  background:#fff;
+  border-radius:14px;
+  padding:20px;
+  text-align:center;
+  font-size:14px;
+}
+
+.game-box.active{
+  background:linear-gradient(180deg,#ff6a6a,#ff9a8b);
+  color:#fff;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:75px;
+  background:#fff;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+}
+
+.nav-item{
+  text-align:center;
+  font-size:12px;
+  color:#999;
+}
+
+.nav-item img{
+  width:30px;
+}
+
+.nav-item.active{
+  color:red;
+}
+
+.invite{
+  width:64px;
+  height:64px;
+  margin-top:-32px;
+}
+
+.invite img{
+  width:72px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="wallet-header">
+  <a href="index.html" class="back">←</a>
+  <h2>Wallet</h2>
+
+  <div class="wallet-balance">
+    <img src="Image/Wallet.png">
+    <h1>₹58.00</h1>
+    <p>Total balance</p>
+  </div>
+
+  <div class="wallet-stats">
+    <div>
+      <div>0</div>
+      <small>Total amount</small>
+    </div>
+    <div>
+      <div>0</div>
+      <small>Total deposit amount</small>
+    </div>
+  </div>
+</div>
+
+<!-- CIRCLES -->
+<div class="card">
+  <div class="circle-wrap">
+    <div>
+      <div class="circle">100%</div>
+      <div class="circle-text">₹58.00<br>Main wallet</div>
+    </div>
+    <div>
+      <div class="circle gray">0%</div>
+      <div class="circle-text">₹0.00<br>3rd party wallet</div>
+    </div>
+  </div>
+
+  <button class="transfer-btn">Main wallet transfer</button>
+
+  <!-- ACTIONS -->
+  <div class="wallet-actions">
+    <div class="wallet-action">
+      <img src="Image/Deposit.png"><div>Deposit</div>
+    </div>
+    <div class="wallet-action">
+      <img src="Image/Withdraw.png"><div>Withdraw</div>
+    </div>
+    <div class="wallet-action">
+      <img src="Image/Deposit.history.png"><div>Deposit history</div>
+    </div>
+    <div class="wallet-action">
+      <img src="Image/Withdraw.history.png"><div>Withdrawal history</div>
+    </div>
+  </div>
+</div>
+
+<!-- GAME WALLET -->
+<div class="game-wallets">
+  <div class="game-box">0.00<br>ARGame</div>
+  <div class="game-box active">58.00<br>Lottery</div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="index.html" class="nav-item">
+    <img src="Image/Home.png"><div>Home</div>
+  </a>
+
+  <a href="activity.html" class="nav-item">
+    <img src="Image/Activity.png"><div>Activity</div>
+  </a>
+
+  <div class="invite">
+    <img src="Image/Invite.png">
+  </div>
+
+  <a href="wallet.html" class="nav-item active">
+    <img src="Image/Wallet.png"><div>Wallet</div>
+  </a>
+
+  <a href="account.html" class="nav-item">
+    <img src="Image/Account.png"><div>Account</div>
+  </a>
+</div>
+
+</body>
+</html>
