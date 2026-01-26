@@ -141,9 +141,13 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
+  position:relative;
+  z-index:9999;
 }
+
 .invite img{
   width:72px;
+  height:72px;
 }
 </style>
 </head>
@@ -257,9 +261,9 @@ body{
     <img src="Image/Activity.png"><div>Activity</div>
   </a>
 
-  <div class="invite">
-    <img src="Image/Invite.png">
-  </div>
+  <a href="invite.html" class="invite">
+  <img src="Image/Invite.png">
+  </a>
 
   <a href="wallet.html" class="nav-item">
     <img src="Image/Wallet.png"><div>Wallet</div>
