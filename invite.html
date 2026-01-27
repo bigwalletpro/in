@@ -15,7 +15,7 @@
 
 body{
   background:#f6f7fb;
-  padding-bottom:130px; /* IMPORTANT */
+  padding-bottom:110px; /* ✅ correct space for fixed nav */
 }
 
 /* HEADER */
@@ -72,7 +72,7 @@ body{
 .stats h4{font-size:14px;color:#ff6a6a;margin-bottom:8px;}
 .stats p{font-size:12px;color:#555;margin:6px 0}
 
-/* INVITE MAIN */
+/* INVITE MAIN BUTTON */
 .invite-main{margin:14px;}
 .invite-main button{
   width:100%;
@@ -131,18 +131,17 @@ body{
 
 /* BOTTOM NAV */
 .bottom-nav{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 75px;
-  background: #fff;
-  border-top: 1px solid #ddd;
-  display: flex;
-  justify-content: space-between; /* 🔥 CHANGE */
-  padding: 0 20px;                /* 🔥 ADD */
-  align-items: center;
-  z-index: 9999;
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:70px;
+  background:#fff;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:999;
 }
 
 .nav-item{
@@ -150,11 +149,10 @@ body{
   font-size:12px;
   color:#999;
   text-decoration:none;
-  margin: 0 6px;
 }
 .nav-item img{
-  width:45px;
-  height:45px;
+  width:40px;
+  height:40px;
   display:block;
   margin:0 auto;
 }
@@ -165,13 +163,13 @@ body{
           saturate(7450%) hue-rotate(356deg) brightness(95%) contrast(120%);
 }
 
-/* INVITE FIXED CENTER */
+/* ✅ INVITE FLOAT BUTTON (FINAL FIX) */
 .invite-btn{
   position:fixed;
-  bottom:38px;            /* 🔥 KEY FIX */
+  bottom:42px;        /* ✅ perfect center overlap */
   left:50%;
   transform:translateX(-50%);
-  z-index:10000;
+  z-index:1000;
 }
 .invite-btn img{
   width:72px;
@@ -182,20 +180,17 @@ body{
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <a href="index.html">←</a>
   Agency
 </div>
 
-<!-- TOP -->
 <div class="top">
   <div class="big">0</div>
   <div class="sub">Yesterday's total commission</div>
   <p>Upgrade the level to increase commission income</p>
 </div>
 
-<!-- STATS -->
 <div class="stats">
   <div class="box">
     <h4>Direct subordinates</h4>
@@ -217,7 +212,6 @@ body{
   <button>INVITE</button>
 </div>
 
-<!-- LIST -->
 <div class="list">
   <div class="item">
     <div class="left">
@@ -256,7 +250,6 @@ body{
   </div>
 </div>
 
-<!-- PROMO -->
 <div class="promo">
   <h4>Promotion data</h4>
   <div class="promo-grid">
@@ -267,26 +260,21 @@ body{
   </div>
 </div>
 
-<!-- BOTTOM NAV -->
 <div class="bottom-nav">
   <a href="index.html" class="nav-item">
     <img src="Image/Home.png">Home
   </a>
-
   <a href="activity.html" class="nav-item">
     <img src="Image/Activity.png">Activity
   </a>
-
   <a href="wallet.html" class="nav-item">
     <img src="Image/Wallet.png">Wallet
   </a>
-
   <a href="account.html" class="nav-item active">
     <img src="Image/Account.png">Account
   </a>
 </div>
 
-<!-- INVITE FLOAT BUTTON -->
 <a href="invite.html" class="invite-btn">
   <img src="Image/Invite.png">
 </a>
