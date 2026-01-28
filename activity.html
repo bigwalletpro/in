@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Promotion</title>
+<title>Activity</title>
 
 <style>
 *{
@@ -14,87 +14,41 @@
 }
 
 body{
-  background:#f5f6fb;
-  padding-bottom:90px;
+  background:#f6f7fb;
+  padding-bottom:140px; /* bottom nav + invite space */
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 .header{
-  background:linear-gradient(180deg,#ff7a7a,#ff9a8b);
-  color:#fff;
-  text-align:center;
-  padding:22px 14px 26px;
-}
-.header h1{
-  font-size:22px;
+  height:56px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  font-size:18px;
   font-weight:bold;
 }
-.bonus-box{
-  display:flex;
-  justify-content:space-between;
-  margin-top:16px;
-  font-size:14px;
-}
-.bonus-box div{
-  width:48%;
-}
-.bonus-box strong{
-  display:block;
-  font-size:20px;
-  margin-top:6px;
-}
-.bonus-btn{
-  margin-top:16px;
-  background:#fff;
-  color:#ff6a6a;
-  padding:10px 22px;
-  border-radius:22px;
-  display:inline-block;
-  font-size:14px;
+.header a{
+  position:absolute;
+  left:14px;
+  font-size:22px;
+  text-decoration:none;
+  color:#333;
 }
 
-/* ICON GRID */
-.icon-grid{
-  background:#fff;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
+/* ===== PAGE CONTENT (demo) ===== */
+.content{
   padding:16px;
 }
-.icon-item{
-  text-align:center;
-  font-size:12px;
-}
-.icon-item img{
-  width:48px;
-  height:48px;
-  margin-bottom:6px;
-}
-
-/* CARDS */
 .card{
   background:#fff;
-  margin:14px;
-  border-radius:14px;
-  overflow:hidden;
-}
-.card img{
-  width:100%;
-  display:block;
-}
-.card .text{
-  padding:12px;
-}
-.card .text h3{
-  font-size:16px;
-  margin-bottom:6px;
-}
-.card .text p{
-  font-size:13px;
-  color:#666;
+  border-radius:16px;
+  padding:16px;
+  margin-bottom:14px;
 }
 
-/* BOTTOM NAV */
+/* ===== BOTTOM NAV ===== */
 .bottom-nav{
   position:fixed;
   bottom:0;
@@ -108,6 +62,7 @@ body{
   align-items:center;
   z-index:999;
 }
+
 .nav-item{
   text-align:center;
   font-size:12px;
@@ -120,8 +75,10 @@ body{
   display:block;
   margin:0 auto;
 }
+
+/* ACTIVE */
 .nav-item.active{
-  color:#ff3b3b;
+  color:red;
 }
 .nav-item.active img{
   filter: brightness(0) saturate(100%) invert(18%) sepia(96%)
@@ -129,10 +86,10 @@ body{
           brightness(95%) contrast(120%);
 }
 
-/* CENTER GAME ICON */
+/* ===== INVITE FLOAT BUTTON (GLOBAL FIX) ===== */
 .invite-btn{
   position:fixed;
-  bottom:38px;
+  bottom:38px;          /* ⭐ PERFECT POSITION */
   left:50%;
   transform:translateX(-50%);
   z-index:1000;
@@ -148,90 +105,43 @@ body{
 
 <!-- HEADER -->
 <div class="header">
-  <h1>L7 LOTTERY7</h1>
-
-  <div class="bonus-box">
-    <div>
-      Today's bonus
-      <strong>₹0.00</strong>
-    </div>
-    <div>
-      Total bonus
-      <strong>₹0.00</strong>
-    </div>
-  </div>
-
-  <div class="bonus-btn">Bonus details</div>
+  <a href="index.html">←</a>
+  Activity
 </div>
 
-<!-- ICON GRID -->
-<div class="icon-grid">
-  <div class="icon-item">
-    <img src="Image/activity_award.png">
-    Activity Award
-  </div>
-  <div class="icon-item">
-    <img src="Image/invitation_bonus.png">
-    Invitation bonus
-  </div>
-  <div class="icon-item">
-    <img src="Image/betting_rebate.png">
-    Betting rebate
-  </div>
-  <div class="icon-item">
-    <img src="Image/first_gift.png">
-    First gift
-  </div>
+<!-- PAGE CONTENT -->
+<div class="content">
+  <div class="card">Activity Award</div>
+  <div class="card">Invitation Bonus</div>
+  <div class="card">Betting Rebate</div>
+  <div class="card">First Gift</div>
 </div>
 
-<!-- CARD 1 -->
-<div class="card">
-  <img src="Image/gifts_banner.png">
-  <div class="text">
-    <h3>Gifts</h3>
-    <p>Enter the redemption code to receive gift rewards</p>
-  </div>
-</div>
-
-<!-- CARD 2 -->
-<div class="card">
-  <img src="Image/attendance_bonus.png">
-  <div class="text">
-    <h3>Attendance bonus</h3>
-    <p>The more consecutive days you sign in, the higher the reward will be.</p>
-  </div>
-</div>
-
-<!-- CARD 3 -->
-<div class="card">
-  <img src="Image/install_banner.png">
-</div>
-
-<!-- CARD 4 -->
-<div class="card">
-  <img src="Image/scam_warning.png">
-</div>
+<!-- INVITE FLOAT BUTTON (OUTSIDE NAV) -->
+<a href="invite.html" class="invite-btn">
+  <img src="Image/Invite.png" alt="Invite">
+</a>
 
 <!-- BOTTOM NAV -->
 <div class="bottom-nav">
-  <a href="promotion.html" class="nav-item active">
-    <img src="Image/Promotion.png">Promotion
+  <a href="index.html" class="nav-item">
+    <img src="Image/Home.png">
+    Home
   </a>
 
-  <a href="activity.html" class="nav-item">
-    <img src="Image/Activity.png">Activity
-  </a>
-
-  <a href="index.html" class="invite-btn">
-    <img src="Image/Game.png">
+  <a href="activity.html" class="nav-item active">
+    <img src="Image/Activity.png">
+    Activity
   </a>
 
   <a href="wallet.html" class="nav-item">
-    <img src="Image/Wallet.png">Wallet
+    <img src="Image/Wallet.png">
+    Wallet
   </a>
 
   <a href="account.html" class="nav-item">
-    <img src="Image/Account.png">Account
+    <img src="Image/Account.png">
+    Account
   </a>
 </div>
 
